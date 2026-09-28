@@ -170,7 +170,7 @@ Cualquier ruta desconocida devuelve `404` con `{ "error": "Not found" }`.
 
 ## Configuración
 
-Copia los archivos de ejemplo si necesitas cambiar algo:
+Copía los archivos de ejemplo si necesitas cambiar algo:
 
 ```bash
 cp backend/.env.example backend/.env
@@ -180,8 +180,41 @@ cp frontend/.env.example frontend/.env
 | Variable         | Dónde      | Por defecto                 | Descripción              |
 | ---------------- | ---------- | --------------------------- | ------------------------ |
 | `PORT`           | backend    | `3000`                      | Puerto del servidor      |
-| `CORS_ORIGIN`    | backend    | `http://localhost:5173`     | Orígenes permitidos      |
+| `CORS_ORIGIN`    | backend    | `http://localhost:5173`     | Orígenes permitidos, separados por comas |
 | `VITE_API_URL`   | frontend   | `http://localhost:3000`     | Base URL de la API       |
+
+`CORS_ORIGIN` acepta varios orígenes separados por comas, por ejemplo
+`http://localhost:5173,https://dags-lyart.vercel.app`. Los orígenes que no estén en la
+lista no reciben el header de CORS y el navegador los bloquea.
+
+## Deploy
+
+Dos proyectos de Vercel, ambos conectados al repo `agustiinaferraro/dags`. Cada `git push`
+a `main` despliega los dos.
+
+| Proyecto  | Root Directory | URL                             | Contenido           |
+| --------- | -------------- | ------------------------------- | ------------------- |
+| `dags`    | `frontend`     | https://dags-lyart.vercel.app   | La web              |
+| `dags-api`| `backend`      | https://dags-api.vercel.app     | La API              |
+
+### Por qué el backend tiene `api/index.js`
+
+Vercel no puede ejecutar un servidor Express con `app.listen()`: cada request corre en
+una función suelta. `api/index.js` es la función serverless y exporta la app de Express
+sin abrir un puerto. El `buildCommand` de `vercel.json` corre `tsc` antes de empaquetar,
+por eso el handler importa de `dist/`.
+
+Las variables de entorno ya están configuradas en Vercel. Para cambiarlas:
+
+```bash
+cd backend  && vercel env add CORS_ORIGIN production
+cd frontend && vercel env add VITE_API_URL production
+```
+
+Un detalle: el frontend todavía no llama a la API (el contenido está todo en
+`src/data/sections.js`), así que `api.js` se elimina del bundle al compilar. Cuando lo
+conectemos, `VITE_API_URL` ya va a estar listo.
+
 
 ## Scripts
 
