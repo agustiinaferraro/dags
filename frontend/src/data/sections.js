@@ -1,0 +1,103 @@
+export const site = {
+  name: 'Página',
+  tagline: 'Pulido de pisos, escaleras artísticas y construcciones',
+  contact: {
+    phone: '',
+    whatsapp: '',
+    email: '',
+    address: '',
+  },
+}
+
+export const sections = [
+  {
+    slug: 'pulido-de-piso',
+    nav: 'Pulido de piso',
+    title: 'Pulido de piso',
+    summary: null,
+    pending: false,
+    items: [
+      {
+        slug: 'pulido-y-plastificado',
+        title: 'Pulido y plastificado',
+        summary: null,
+        body: [null, null],
+        includes: [null, null, null],
+        images: [],
+      },
+      {
+        slug: 'reparaciones',
+        title: 'Reparaciones',
+        summary: null,
+        body: [null, null],
+        includes: [null, null, null],
+        images: [],
+      },
+      {
+        slug: 'pulido-e-hidrolaqueado',
+        title: 'Pulido e hidrolaqueado',
+        summary: null,
+        body: [null, null],
+        includes: [null, null, null],
+        images: [],
+      },
+      {
+        slug: 'colocacion-de-zocalos',
+        title: 'Colocación de zócalos',
+        summary: null,
+        body: [null, null],
+        includes: [null, null, null],
+        images: [],
+      },
+    ],
+  },
+  {
+    slug: 'escaleras-artisticas',
+    nav: 'Escaleras artísticas',
+    title: 'Escaleras artísticas',
+    summary: null,
+    pending: false,
+    items: [
+      {
+        slug: 'barandas',
+        title: 'Barandas',
+        summary: null,
+        body: [null, null],
+        includes: [null, null, null],
+        images: [],
+      },
+      {
+        slug: 'sin-barandas',
+        title: 'Sin barandas',
+        summary: null,
+        body: [null, null],
+        includes: [null, null, null],
+        images: [],
+      },
+      {
+        slug: 'pasamanos',
+        title: 'Pasamanos',
+        summary: null,
+        body: [null, null],
+        includes: [null, null, null],
+        images: [],
+      },
+      {
+        slug: 'nuevos-y-restauraciones',
+        title: 'Nuevos y restauraciones',
+        summary: null,
+        body: [null, null],
+        includes: [null, null, null],
+        images: [],
+      },
+    ],
+  },
+  {
+    slug: 'construcciones-civiles-e-industriales',
+    nav: 'Construcciones civiles e industriales',
+    title: 'Construcciones civiles e industriales',
+    summary: null,
+    pending: true,
+    items: [],
+  },
+]
