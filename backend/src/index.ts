@@ -1,7 +1,6 @@
-import { createApp } from './app.js'
+import app from './app.js'
 
 const port = Number(process.env.PORT ?? 3000)
-const app = createApp()
 
 app.listen(port, () => {
   console.log(`API escuchando en http://localhost:${port}`)
